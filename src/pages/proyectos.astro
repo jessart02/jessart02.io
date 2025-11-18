@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis Proyectos</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f20df2",
+              neonBlue: "#00c6ff",
+              neonPurple: "#b400ff",
+              darkBg: "#0a0010",
+              darkPanel: "#150018",
+              "background-dark": "#120013",
+            },
+            boxShadow: {
+              neon: "0 0 20px #f20df2",
+              neonBlue: "0 0 20px #00c6ff",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background: radial-gradient(circle at center, #240024, #0a0010 80%);
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+
+  <body class="bg-darkBg text-gray-200 font-display">
+    <main class="container mx-auto px-6 py-12">
+      <h1 class="text-4xl font-bold glitch mb-12 text-center" data-text="Mis Proyectos">
+        Mis Proyectos
+      </h1>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neon">
+          <img src="Imagen de WhatsApp 2025-11-18 a las 08.21.53_f4c61fdd.jpg" alt="Proyecto 1" class="rounded mb-4" />
+          <h2 class="text-xl font-semibold mb-2">Aplicación para ayuda a necesitados en desastres naturales</h2>
+          <p class="text-gray-400">
+            Se desarrollo una app que ayudaba a la gente necesitada cuando se encontraba en situaciones de desastres naturales.
+          </p>
+        </div>
+
+        <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neonBlue">
+          <img src="Captura de pantalla 2025-11-18 082234.png" alt="Proyecto 2" class="rounded mb-4" />
+          <h2 class="text-xl font-semibold mb-2">Creación de una pagina web de eventos escolares dentro de la UES San José del Rincón</h2>
+          <p class="text-gray-400">
+            Un sitio web para dar a conocer los eventos más significativos dentro de la UMB.
+          </p>
+        </div>
+
+        <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neon">
+          <img src="Captura de pantalla 2025-11-18 082142.png" alt="Proyecto 3" class="rounded mb-4" />
+          <h2 class="text-xl font-semibold mb-2">Registro de estudiantes dentro de la UES Sán José del Rincón</h2>
+          <p class="text-gray-400">
+            Es un sitio de asistencia en donde se registran aquellos estudiantes que han formado parte de nuestra institucion, así como los que han pisado estas puertas.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <div class="cursed-particles" id="particles"></div>
+    <div class="neon-lines"></div>
+    <div class="ink-blots"></div>
+    <div class="cursed-aura"></div>
+
+
+  </body>
+</html>

@@ -1,0 +1,445 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Habilidades">
+    <section class="habilidades-section">
+        <canvas id="particlesSkills" aria-hidden="true"></canvas>
+
+        <div class="container">
+            <h2 class="skills-title glitch" data-text="Mis Habilidades">
+                Mis Habilidades
+            </h2>
+
+            <div class="skills-grid hud-frame">
+                <article class="skill-card">
+                    <div class="skill-icon"></div>
+                    <h3>Jugar videojuegos</h3>
+                    <p>
+                        Me gustan cuando los videojuegos musicales son rapidos,
+                        y acierto en todas las teclas.
+                    </p>
+
+                    <img
+                        src="034bb1d36a99df43fb5b5daed6832be8.gif"
+                        class="skill-img"
+                        alt="Gaming"
+                    />
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon"></div>
+                    <h3>Dibujar</h3>
+                    <p>
+                        Me gusta mucho dibujar, ya sea aplicar colores o a
+                        blanco y negro.
+                    </p>
+
+                    <img
+                        src="c12405_d13abcc3b1744b8fa0613d81817b0966~mv2.gif"
+                        class="skill-img"
+                        alt="Dibujar"
+                    />
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon"></div>
+                    <h3>Escribir rápido</h3>
+                    <p>
+                        A raíz de los videojuegos de ritmo rapido, se escribir
+                        rapido en el teclado.
+                    </p>
+
+                    <img
+                        src="505ddb5e0b0e8c3e96b66e1469ef47c1.gif"
+                        class="skill-img"
+                        alt="Escritura rápida"
+                    />
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon"></div>
+                    <h3>Ilustración digital</h3>
+                    <p>
+                        El arte digital lo aplico bastante, uso varios programas
+                        diferentes para poder realizar ilustraciones digitales.
+                    </p>
+
+                    <img
+                        src="la-vida-de-un-animador-freelance.gif"
+                        class="skill-img"
+                        alt="Ilustración digital"
+                    />
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon"></div>
+                    <h3>Diseño</h3>
+                    <p>
+                        Me gusta diseñar varias cosas, dependiendo de que sea.
+                    </p>
+
+                    <img
+                        src="diseno-grafico-mitos-disenador-grafico-working.gif"
+                        class="skill-img"
+                        alt="Diseño"
+                    />
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon"></div>
+                    <h3>Ver anime</h3>
+                    <p>
+                        A veces me clavo viendo anime hasta terminarlo en una
+                        noche.
+                    </p>
+
+                    <img
+                        src="anime-laughing-umaru-doma-while-watching-tv-kq27t16kg9rwfb29.gif"
+                        class="skill-img"
+                        alt="Anime"
+                    />
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .habilidades-section {
+            position: relative;
+            padding: 90px 20px;
+            min-height: 100vh;
+            text-align: center;
+            background: radial-gradient(
+                circle at 50% 20%,
+                #7d00ff 0%,
+                #2a0035 40%,
+                #0b0012 100%
+            );
+            overflow: hidden;
+            color: #fff;
+        }
+
+        #particlesSkills {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            display: block;
+        }
+
+        .container {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+
+        .skills-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow:
+                0 0 10px #ff00ff,
+                0 0 25px #a700ff;
+            animation: glowPulse 2.6s infinite ease-in-out;
+        }
+
+        @keyframes glowPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 10px #ff00ff;
+            }
+            50% {
+                text-shadow:
+                    0 0 30px #ff00ff,
+                    0 0 80px #7100ff;
+            }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+            margin-top: 10px;
+            z-index: 3;
+        }
+
+        .skill-card {
+            background: linear-gradient(
+                180deg,
+                rgba(20, 6, 34, 0.6),
+                rgba(10, 2, 18, 0.5)
+            );
+            border: 1px solid rgba(255, 0, 255, 0.18);
+            padding: 22px;
+            border-radius: 14px;
+            color: #fff;
+            backdrop-filter: blur(6px);
+            box-shadow:
+                0 0 30px rgba(160, 0, 255, 0.12),
+                inset 0 0 30px rgba(255, 0, 255, 0.02);
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 0 40px #ff00ff,
+                0 0 90px #7a00ff;
+            border-color: rgba(255, 0, 255, 0.5);
+        }
+
+        .skill-card::before {
+            content: "";
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(
+                from 200deg,
+                transparent,
+                rgba(255, 0, 255, 0.06),
+                transparent
+            );
+            transform: rotate(0deg);
+            transition: opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-icon {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 12px #ff00ff;
+        }
+
+        .hud-frame {
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(242, 13, 242, 0.18);
+        }
+
+        .glitch {
+            position: relative;
+        }
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 2px;
+            top: 0;
+            color: #00c6ff;
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            animation: glitchMove 0.6s infinite alternate;
+            z-index: -1;
+        }
+        @keyframes glitchMove {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-3px);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .skills-title {
+                font-size: 2.2rem;
+            }
+            .skill-icon {
+                font-size: 2.2rem;
+            }
+        }
+        .skill-img {
+            width: 100%;
+            margin-top: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 0, 255, 0.25);
+            box-shadow:
+                0 0 20px rgba(255, 0, 255, 0.25),
+                inset 0 0 20px rgba(255, 0, 255, 0.15);
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                filter 0.35s ease;
+        }
+
+        .skill-card:hover .skill-img {
+            transform: scale(1.03);
+            box-shadow:
+                0 0 40px rgba(255, 0, 255, 0.45),
+                0 0 80px rgba(120, 0, 255, 0.75),
+                inset 0 0 40px rgba(255, 0, 255, 0.2);
+            filter: brightness(1.15) saturate(1.5);
+        }
+
+        @keyframes imgGlow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 0, 255, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(255, 0, 255, 0.4);
+            }
+        }
+
+        .skill-img {
+            animation: imgGlow 4s infinite ease-in-out;
+        }
+    </style>
+
+    <script type="module">
+        (function () {
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", init);
+            } else {
+                init();
+            }
+
+            function init() {
+                const canvas = document.getElementById("particlesSkills");
+                const section = document.querySelector(".habilidades-section");
+                if (!canvas || !section) {
+                    console.warn(
+                        "particlesSkills canvas o habilidades-section no encontrado.",
+                    );
+                    return;
+                }
+
+                const ctx = canvas.getContext && canvas.getContext("2d");
+                if (!ctx) {
+                    console.warn(
+                        "2D context not available on particlesSkills canvas.",
+                    );
+                    return;
+                }
+
+                function setSize() {
+                    const rect = section.getBoundingClientRect();
+                    const dpr = window.devicePixelRatio || 1;
+                    const w = Math.max(1, Math.floor(rect.width));
+                    const h = Math.max(1, Math.floor(rect.height));
+                    canvas.width = Math.floor(w * dpr);
+                    canvas.height = Math.floor(h * dpr);
+                    canvas.style.width = w + "px";
+                    canvas.style.height = h + "px";
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+
+                setSize();
+
+                let ro;
+                if (window.ResizeObserver) {
+                    ro = new ResizeObserver(() => setSize());
+                    ro.observe(section);
+                } else {
+                    window.addEventListener("resize", setSize);
+                }
+
+                const PARTICLE_COUNT = Math.min(
+                    180,
+                    Math.max(50, Math.floor((canvas.width / 1000) * 120)),
+                );
+                const particles = [];
+
+                function createParticles() {
+                    particles.length = 0;
+                    for (let i = 0; i < PARTICLE_COUNT; i++) {
+                        particles.push({
+                            x:
+                                (Math.random() * canvas.width) /
+                                (window.devicePixelRatio || 1),
+                            y:
+                                (Math.random() * canvas.height) /
+                                (window.devicePixelRatio || 1),
+                            size: Math.random() * 3 + 0.8,
+                            speedX: Math.random() * 0.8 - 0.4,
+                            speedY: Math.random() * 0.8 - 0.4,
+                            hueShift: Math.random() * 40 - 20,
+                        });
+                    }
+                }
+
+                createParticles();
+                function handleResizeRecreate() {
+                    setSize();
+                    createParticles();
+                }
+
+                if (ro) {
+                    let to;
+                    ro.observe(section);
+                    ro.disconnect && ro.observe(section);
+                    window.addEventListener("resize", () => {
+                        clearTimeout(to);
+                        to = setTimeout(handleResizeRecreate, 150);
+                    });
+                }
+
+                let rafId = null;
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    const g = ctx.createLinearGradient(
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height,
+                    );
+                    g.addColorStop(0, "rgba(125,0,255,0.02)");
+                    g.addColorStop(1, "rgba(0,0,0,0.02)");
+                    ctx.fillStyle = g;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    particles.forEach((p) => {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `hsl(${285 + p.hueShift} 100% 60%)`;
+                        ctx.shadowBlur = 18;
+                        ctx.shadowColor = "rgba(255,0,255,0.9)";
+                        ctx.fill();
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size * 3.2, 0, Math.PI * 2);
+                        ctx.fillStyle = "rgba(160,0,255,0.06)";
+                        ctx.fill();
+
+                        p.x += p.speedX;
+                        p.y += p.speedY;
+
+                        const w = canvas.width / (window.devicePixelRatio || 1);
+                        const h =
+                            canvas.height / (window.devicePixelRatio || 1);
+                        if (p.x < -10) p.x = w + 10;
+                        if (p.x > w + 10) p.x = -10;
+                        if (p.y < -10) p.y = h + 10;
+                        if (p.y > h + 10) p.y = -10;
+                    });
+
+                    rafId = requestAnimationFrame(animate);
+                }
+
+                animate();
+
+                window.addEventListener("beforeunload", cleanup);
+                function cleanup() {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    if (ro && ro.disconnect) ro.disconnect();
+                    window.removeEventListener("resize", handleResizeRecreate);
+                    window.removeEventListener("beforeunload", cleanup);
+                }
+            }
+        })();
+    </script>
+</Layout>

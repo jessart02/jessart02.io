@@ -1,8 +1,176 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SiteMaintenance from '../components/templates/SiteMaintenance.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<SiteMaintenance />
+    <main class="font-display">
+        <div class="min-h-screen w-full">
+            <header
+                class="flex items-center justify-between border-b border-primary/40 px-6 py-4 backdrop-blur-md bg-darkPanel/40 shadow-neon"
+            >
+                <div class="flex items-center gap-4">
+                    <div class="text-primary size-7 drop-shadow-neon">
+                        <span class="material-symbols-outlined text-4xl">
+                            radio_button_checked
+                        </span>
+                    </div>
+
+                    <h2
+                        class="text-xl font-bold tracking-wide drop-shadow-neon"
+                    >
+                        Portafolio de Evidencias
+                    </h2>
+                </div>
+
+                <nav class="hidden md:flex gap-8 text-gray-300">
+                    <a class="hover:text-primary transition">Inicio</a>
+                    <a
+                        href="/habilidades"
+                        target="_blank"
+                        class="hover:text-primary transition"
+                    >
+                        Habilidades
+                    </a>
+                    <a
+                        href="/proyectos"
+                        target="_blank"
+                        class="hover:text-primary transition"
+                    >
+                        Proyectos
+                    </a>
+                    <a
+                        href="/contacto"
+                        target="_blank"
+                        class="hover:text-primary transition"
+                    >
+                        Contacto
+                    </a>
+                </nav>
+
+                <button class="md:hidden text-gray-100">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </header>
+
+            <section
+                class="mt-10 flex flex-col items-center justify-center gap-4 p-6 rounded-xl text-center border border-primary/40 bg-darkPanel/60 shadow-neon"
+                style='background-image: linear-gradient(rgba(0,0,0,0.5), rgba(10,0,16,0.9)), url("/dark-neon-red-and-teal-40d4u8kcwxp11ijp.jpg"); background-size: cover;'
+            >
+                <h1
+                    class="text-6xl font-black text-white drop-shadow-[0_0_15px_#f20df2]"
+                >
+                    Jesús Martínez Narciso
+                </h1>
+
+                <div class="flex justify-center mt-6">
+                    <img
+                        class="w-48 h-auto object-contain drop-shadow-[0_0_20px_#a855f7] animate-pulse hover:scale-125 transition-all duration-500"
+                        src="/yo.jpg"
+                        alt="Foto personal"
+                    />
+                </div>
+
+                <div class="flex gap-4 mt-4 flex-wrap justify-center">
+                    <button
+                        class="px-8 py-3 bg-primary text-white font-bold rounded-lg shadow-neon hover:scale-110 transition"
+                    >
+                        Ver Proyectos
+                    </button>
+
+                    <a
+                        href="/contacto"
+                        target="_blank"
+                        class="px-8 py-3 bg-darkPanel border border-primary/50 text-white font-bold rounded-lg hover:bg-primary/20 hover:scale-110 transition inline-block"
+                    >
+                        Contactar
+                    </a>
+                </div>
+            </section>
+
+            <section class="mt-20 px-6">
+                <h2 class="text-4xl font-black text-center drop-shadow-neon">
+                    ¿Quién soy?
+                </h2>
+
+                <div
+                    class="mt-10 flex flex-col lg:flex-row items-center justify-center gap-10"
+                >
+                    <div class="w-full lg:w-1/3 flex justify-center">
+                        <img
+                            src="jujutsu-kaisen-gif-9.gif"
+                            alt="Imagen izquierda"
+                            class="w-72 rounded-xl shadow-neon hover:scale-105 transition duration-500"
+                        />
+                    </div>
+
+                    <p
+                        class="text-gray-400 max-w-2xl text-center lg:text-left leading-relaxed"
+                    >
+                        Me presento: mi nombre es <strong
+                            >Jesús Martínez Narciso</strong
+                        >, tengo 23 años y actualmente estudio la carrera de <strong
+                            >Ingeniería en Sistemas Computacionales</strong
+                        > dentro de la UES San José del Rincón, Universidad Mexiquense
+                        del Bicentenario.
+
+                        <br /><br />
+                        Me gusta cualquier tipo de música, en especial el género
+                        <strong>dubstep</strong>, aunque también disfruto la
+                        música típica que escucha casi todo mexicano. Lo que más
+                        me gusta es jugar videojuegos, especialmente los juegos
+                        rítmicos y aquellos con buen ambiente, buena música y
+                        buena historia.
+
+                        <br /><br />
+                        También disfruto del anime, sobre todo los que tienen acción,
+                        buena historia y personajes memorables. A veces hago videos
+                        para TikTok; de vez en cuando hago directos solo para pasar
+                        el rato, aunque prefiero grabar, editar y subir mis clips
+                        de videojuegos.
+
+                        <br /><br />
+                        Mi nickname es <strong>JessArt2002</strong>. En este
+                        portafolio verás un poco de mí, algunos proyectos que he
+                        realizado en mi estancia en la universidad y un pequeño
+                        formulario de contacto para quien desee comunicarse
+                        conmigo.
+                    </p>
+
+                    <div class="w-full lg:w-1/3 flex justify-center">
+                        <img
+                            src="jujutsu-kaisen-gif-9.gif"
+                            alt="Imagen derecha"
+                            class="w-72 rounded-xl shadow-neon hover:scale-105 transition duration-500"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <footer class="mt-20 border-t border-primary/40 py-10 text-center">
+                <div class="flex justify-center gap-6 mb-4"></div>
+
+                <div class="flex justify-center gap-4 text-gray-400">
+                    <span
+                        class="material-symbols-outlined hover:text-primary transition"
+                    >
+                        alternate_email
+                    </span>
+                    <span
+                        class="material-symbols-outlined hover:text-primary transition"
+                    >
+                        code
+                    </span>
+                    <span
+                        class="material-symbols-outlined hover:text-primary transition"
+                    >
+                        group
+                    </span>
+                </div>
+
+                <p class="text-gray-500 text-sm mt-4">
+                    © 2025 JessArt2002. Todos los derechos reservados.
+                </p>
+            </footer>
+        </div>
+    </main>
 </Layout>
