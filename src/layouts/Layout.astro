@@ -1,29 +1,291 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Jesus | portafolio</title>
-	</head>
-	<body>
-		<div class="w-full min-h-screen">
-			<slot />
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio de Evidencias</title>
 
-		</div>
-	</body>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"
+    ></script>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f20df2",
+              neonBlue: "#00c6ff",
+              neonPurple: "#b400ff",
+              darkBg: "#0a0010",
+              darkPanel: "#150018",
+              "background-dark": "#120013",
+            },
+            boxShadow: {
+              neon: "0 0 20px #f20df2",
+              neonBlue: "0 0 20px #00c6ff",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background: radial-gradient(circle at center, #240024, #0a0010 80%);
+        background-attachment: fixed;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("/dark-neon-red-and-teal-40d4u8kcwxp11ijp.jpg");
+        background-size: cover;
+        opacity: 0.25;
+        z-index: -1;
+        animation: float 60s linear infinite;
+      }
+
+      @keyframes float {
+        from {
+          transform: scale(1) translateY(0);
+        }
+        to {
+          transform: scale(1.2) translateY(-40px);
+        }
+      }
+      .cursed-particles {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .cursed-dot {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: radial-gradient(circle, #f20df2, #7a0091);
+        border-radius: 50%;
+        box-shadow: 0 0 12px #f20df2;
+        animation:
+          curseFloat 6s infinite ease-in-out,
+          curseGlow 2s infinite alternate;
+        opacity: 0.8;
+      }
+
+      @keyframes curseFloat {
+        0% {
+          transform: translateY(0) translateX(0) scale(1);
+        }
+        50% {
+          transform: translateY(-60px) translateX(20px) scale(1.4);
+        }
+        100% {
+          transform: translateY(-120px) translateX(-20px) scale(0.8);
+        }
+      }
+
+      @keyframes curseGlow {
+        0% {
+          box-shadow: 0 0 10px #f20df2;
+        }
+        100% {
+          box-shadow: 0 0 25px #ff43ff;
+        }
+      }
+      /* Líneas neon estilo circuito */
+      .neon-lines {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -2;
+      }
+
+      .neon-line {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #f20df2, transparent);
+        animation: slideLine 6s infinite linear;
+        opacity: 0.35;
+        filter: drop-shadow(0 0 6px #f20df2);
+      }
+
+      @keyframes slideLine {
+        0% {
+          transform: translateX(-150vw);
+        }
+        100% {
+          transform: translateX(150vw);
+        }
+      }
+      .cursed-aura {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at center,
+          rgba(242, 13, 242, 0.15),
+          transparent 60%
+        );
+        animation: auraPulse 5s infinite alternate;
+      }
+
+      @keyframes auraPulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1.3);
+          opacity: 1;
+        }
+      }
+
+      .ink-blots {
+        position: fixed;
+        inset: 0;
+        z-index: -4;
+        background-image: url("/dark-neon-red-and-teal-40d4u8kcwxp11ijp.jpg");
+        background-size: cover;
+        opacity: 0.12;
+        animation: inkMove 40s linear infinite;
+      }
+
+      @keyframes inkMove {
+        0% {
+          transform: scale(1) translateY(0);
+        }
+        100% {
+          transform: scale(1.3) translateY(-80px);
+        }
+      }
+      .hud-frame {
+        position: relative;
+        border: 1px solid rgba(242, 13, 242, 0.4);
+        padding: 20px;
+        border-radius: 8px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 0 20px rgba(242, 13, 242, 0.4);
+      }
+
+      .hud-frame::before,
+      .hud-frame::after {
+        content: "";
+        position: absolute;
+        height: 16px;
+        width: 16px;
+        border: 2px solid #f20df2;
+      }
+
+      .hud-frame::before {
+        top: -4px;
+        left: -4px;
+        border-bottom: none;
+        border-right: none;
+      }
+
+      .hud-frame::after {
+        bottom: -4px;
+        right: -4px;
+        border-top: none;
+        border-left: none;
+      }
+
+      .hud-scan {
+        position: absolute;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(90deg, transparent, #f20df2, transparent);
+        animation: scan 3s infinite ease-in-out;
+        opacity: 0.7;
+      }
+
+      @keyframes scan {
+        0% {
+          top: 0%;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+
+      .glitch {
+        position: relative;
+        text-shadow: 0 0 6px #f20df2;
+      }
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        top: 0;
+        color: #00c6ff;
+        opacity: 0.6;
+        animation: glitchMove 0.5s infinite alternate;
+      }
+
+      @keyframes glitchMove {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-2px);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-darkBg text-gray-200 font-display">
+    <slot />
+    <div class="cursed-particles">
+      {
+        Array.from({ length: 35 }).map((_, i) => (
+          <div
+            class="cursed-dot"
+            style={`top:${Math.random() * 100}%; 
+              left:${Math.random() * 100}%; 
+              animation-delay:${Math.random() * 8}s;`}
+          />
+        ))
+      }
+      <div class="neon-lines">
+        {
+          Array.from({ length: 12 }).map((_, i) => (
+            <div
+              class="neon-line"
+              style={`
+        top: ${Math.random() * 100}%;
+        animation-delay: ${Math.random() * 6}s;
+        width: ${40 + Math.random() * 60}%;
+      `}
+            />
+          ))
+        }
+        
+        <div class="ink-blots"></div>
+        <div class="cursed-aura"></div>
+      </div>
+    </div>
+    
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
