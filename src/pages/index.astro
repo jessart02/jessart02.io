@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../pages/contacto.astro";
+import "../pages/habilidades.astro";
+import "../pages/proyectos.astro";
 ---
 
 <Layout>
@@ -26,21 +29,21 @@ import Layout from "../layouts/Layout.astro";
                     <a class="hover:text-primary transition">Inicio</a>
                     <a
                         href="/habilidades"
-                        target="_blank"
+                        target="_parent"
                         class="hover:text-primary transition"
                     >
                         Habilidades
                     </a>
                     <a
                         href="/proyectos"
-                        target="_blank"
+                        target="_parent"
                         class="hover:text-primary transition"
                     >
                         Proyectos
                     </a>
                     <a
                         href="/contacto"
-                        target="_blank"
+                        target="_parent"
                         class="hover:text-primary transition"
                     >
                         Contacto
@@ -63,11 +66,7 @@ import Layout from "../layouts/Layout.astro";
                 </h1>
 
                 <div class="flex justify-center mt-6">
-                    <img
-                        class="w-48 h-auto object-contain drop-shadow-[0_0_20px_#a855f7] animate-pulse hover:scale-125 transition-all duration-500"
-                        src="/yo.jpg"
-                        alt="Foto personal"
-                    />
+
                 </div>
 
                 <div class="flex gap-4 mt-4 flex-wrap justify-center">
@@ -96,11 +95,7 @@ import Layout from "../layouts/Layout.astro";
                     class="mt-10 flex flex-col lg:flex-row items-center justify-center gap-10"
                 >
                     <div class="w-full lg:w-1/3 flex justify-center">
-                        <img
-                            src="jujutsu-kaisen-gif-9.gif"
-                            alt="Imagen izquierda"
-                            class="w-72 rounded-xl shadow-neon hover:scale-105 transition duration-500"
-                        />
+
                     </div>
 
                     <p
@@ -137,11 +132,6 @@ import Layout from "../layouts/Layout.astro";
                     </p>
 
                     <div class="w-full lg:w-1/3 flex justify-center">
-                        <img
-                            src="jujutsu-kaisen-gif-9.gif"
-                            alt="Imagen derecha"
-                            class="w-72 rounded-xl shadow-neon hover:scale-105 transition duration-500"
-                        />
                     </div>
                 </div>
             </section>
