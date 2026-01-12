@@ -22,15 +22,15 @@ import Layout from "../layouts/Layout.astro";
                     </h2>
                 </div>
 
-                <nav class="hidden md:flex gap-8 text-gray-300">
-                    <a href="/" class="hover:text-primary transition">Inicio</a>
-                    <a class="hover:text-primary transition">Habilidades</a>
-                    <a class="hover:text-primary transition">Proyectos</a>
-                    <a
-                        href="/contacto"
-                        class="hover:text-primary transition"
-                        target="_blank">Contacto</a
+                <nav>
+                    <a href={`${import.meta.env.BASE_URL}`}>Inicio</a>
+                    <a href={`${import.meta.env.BASE_URL}habilidades`}
+                        >Habilidades</a
                     >
+                    <a href={`${import.meta.env.BASE_URL}proyectos`}
+                        >Proyectos</a
+                    >
+                    <a href={`${import.meta.env.BASE_URL}contact`}>Contacto</a>
                 </nav>
 
                 <button class="md:hidden text-gray-100">

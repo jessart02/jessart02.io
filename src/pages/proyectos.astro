@@ -51,44 +51,122 @@ import "../styles/global.css";
         background: radial-gradient(circle at center, #240024, #0a0010 80%);
         background-attachment: fixed;
       }
+
+      .project-img {
+        width: 100%;
+        margin-bottom: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 0, 255, 0.25);
+        box-shadow:
+          0 0 20px rgba(255, 0, 255, 0.25),
+          inset 0 0 20px rgba(255, 0, 255, 0.15);
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease,
+          filter 0.4s ease;
+        animation: imgGlow 4.5s infinite ease-in-out;
+      }
+
+      .hud-frame:hover .project-img {
+        transform: scale(1.04);
+        box-shadow:
+          0 0 45px rgba(255, 0, 255, 0.6),
+          0 0 90px rgba(120, 0, 255, 0.8);
+        filter: brightness(1.15) saturate(1.4);
+      }
+
+      @keyframes imgGlow {
+        0%, 100% {
+          box-shadow: 0 0 18px rgba(255, 0, 255, 0.25);
+        }
+        50% {
+          box-shadow: 0 0 35px rgba(255, 0, 255, 0.45);
+        }
+      }
+
+      .glitch {
+        position: relative;
+      }
+
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        top: 0;
+        color: #00c6ff;
+        opacity: 0.5;
+        mix-blend-mode: screen;
+        animation: glitchMove 0.6s infinite alternate;
+        z-index: -1;
+      }
+
+      @keyframes glitchMove {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-3px);
+        }
+      }
     </style>
   </head>
 
   <body class="bg-darkBg text-gray-200 font-display">
     <main class="container mx-auto px-6 py-12">
-      <h1 class="text-4xl font-bold glitch mb-12 text-center" data-text="Mis Proyectos">
+      <h1
+        class="text-4xl font-bold glitch mb-12 text-center"
+        data-text="Mis Proyectos"
+      >
         Mis Proyectos
       </h1>
 
       <div class="grid md:grid-cols-3 gap-8">
+
         <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neon">
-          <h2 class="text-xl font-semibold mb-2">Aplicación para ayuda a necesitados en desastres naturales</h2>
+          <img
+            src={`${import.meta.env.BASE_URL}aplicacion.jpg`}
+            alt="Aplicación de ayuda en desastres naturales"
+            class="project-img"
+          />
+          <h2 class="text-xl font-semibold mb-2">
+            Aplicación para ayuda a necesitados en desastres naturales
+          </h2>
           <p class="text-gray-400">
-            Se desarrollo una app que ayudaba a la gente necesitada cuando se encontraba en situaciones de desastres naturales.
+            Se desarrolló una app que ayudaba a personas en situaciones de
+            desastres naturales.
           </p>
         </div>
 
         <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neonBlue">
-          <h2 class="text-xl font-semibold mb-2">Creación de una pagina web de eventos escolares dentro de la UES San José del Rincón</h2>
+          <img
+            src={`${import.meta.env.BASE_URL}eventos.png`}
+            alt="Eventos escolares UES"
+            class="project-img"
+          />
+          <h2 class="text-xl font-semibold mb-2">
+            Página web de eventos escolares - UES San José del Rincón
+          </h2>
           <p class="text-gray-400">
-            Un sitio web para dar a conocer los eventos más significativos dentro de la UMB.
+            Sitio web para dar a conocer los eventos más importantes dentro de la UMB.
           </p>
         </div>
 
         <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neon">
-          <h2 class="text-xl font-semibold mb-2">Registro de estudiantes dentro de la UES Sán José del Rincón</h2>
+          <img
+            src={`${import.meta.env.BASE_URL}registro.png`}
+            alt="Registro de estudiantes UES"
+            class="project-img"
+          />
+          <h2 class="text-xl font-semibold mb-2">
+            Registro de estudiantes - UES San José del Rincón
+          </h2>
           <p class="text-gray-400">
-            Es un sitio de asistencia en donde se registran aquellos estudiantes que han formado parte de nuestra institucion, así como los que han pisado estas puertas.
+            Sistema de registro y control de estudiantes que han formado parte
+            de la institución.
           </p>
         </div>
+
       </div>
     </main>
-
-    <div class="cursed-particles" id="particles"></div>
-    <div class="neon-lines"></div>
-    <div class="ink-blots"></div>
-    <div class="cursed-aura"></div>
-
-
   </body>
 </html>

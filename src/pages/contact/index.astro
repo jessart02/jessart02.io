@@ -1,0 +1,66 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ContactForm from "../../components/molecules/ContactForm.jsx";
+---
+
+<Layout>
+  <main class="font-display">
+    <div class="min-h-screen w-full">
+
+      <!-- HEADER -->
+      <header class="flex items-center justify-between border-b border-primary/40 px-6 py-4 backdrop-blur-md bg-darkPanel/40 shadow-neon">
+        <div class="flex items-center gap-4">
+          <div class="text-primary size-7 drop-shadow-neon">
+            <span class="material-symbols-outlined text-4xl">
+              radio_button_checked
+            </span>
+          </div>
+
+          <h2 class="text-xl font-bold tracking-wide drop-shadow-neon">
+            Portafolio de evidencias
+          </h2>
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-gray-300">
+          <a href="/" class="hover:text-primary transition">Inicio</a>
+          <a href="/habilidades" class="hover:text-primary transition">Habilidades</a>
+          <a href="/proyectos" class="hover:text-primary transition">Proyectos</a>
+          <a href="/contact" class="hover:text-primary transition">Contacto</a>
+        </nav>
+
+        <button class="md:hidden text-gray-100">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </header>
+
+      <section
+        class="mt-10 flex flex-col items-center justify-center gap-4 p-8 rounded-xl text-center border border-primary/40 bg-darkPanel/60 shadow-neon mx-6"
+        style='background-image: linear-gradient(rgba(0,0,0,0.5), rgba(10,0,16,0.9)), url("/dark-neon-red-and-teal-40d4u8kcwxp11ijp.jpg"); background-size: cover; background-position: center;'
+      >
+        <h1
+          class="text-6xl font-black text-primary drop-shadow-[0_0_20px_#f20df2] glitch"
+          data-text="Contacto"
+        >
+          Contáctame
+        </h1>
+
+        <p class="max-w-2xl text-gray-300 mt-4">
+          ¿Quieres saber más de mí? Escríbeme, prometo leer tu mensaje 
+        </p>
+      </section>
+
+      <section class="mt-16 max-w-xl mx-auto hud-frame relative p-8">
+        <div class="hud-scan"></div>
+
+        <ContactForm client:load />
+      </section>
+
+      <footer class="mt-20 border-t border-primary/40 py-10 text-center">
+        <p class="text-gray-500 text-sm mt-4">
+          © 2025 JessArt2002. Todos los derechos reservados.
+        </p>
+      </footer>
+
+    </div>
+  </main>
+</Layout>
