@@ -1,0 +1,239 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  return blogPosts.map(post => ({
+    params: { id: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout>
+  <main class="font-display">
+    <div class="min-h-screen w-full">
+      <!-- HEADER -->
+      <header
+        class="flex items-center justify-between border-b border-primary/40 px-6 py-4 backdrop-blur-md bg-darkPanel/40 shadow-neon"
+      >
+        <div class="flex items-center gap-4">
+          <div class="text-primary size-7 drop-shadow-neon">
+            <span class="material-symbols-outlined text-4xl">
+              radio_button_checked
+            </span>
+          </div>
+          <h2 class="text-xl font-bold tracking-wide drop-shadow-neon">
+            Portafolio de Evidencias
+          </h2>
+        </div>
+
+        <nav class="hidden md:flex gap-6 text-gray-300">
+          <a href={`${import.meta.env.BASE_URL}/`} class="hover:text-primary transition">Inicio</a>
+          <a href={`${import.meta.env.BASE_URL}/habilidades/`} class="hover:text-primary transition">Habilidades</a>
+          <a href={`${import.meta.env.BASE_URL}/proyectos/`} class="hover:text-primary transition">Proyectos</a>
+          <a href={`${import.meta.env.BASE_URL}/blog/`} class="text-primary font-bold">Blog</a>
+          <a href={`${import.meta.env.BASE_URL}/contact/`} class="hover:text-primary transition">Contacto</a>
+        </nav>
+
+        <button class="md:hidden text-gray-100">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </header>
+
+      <!-- BACK BUTTON -->
+      <div class="container mx-auto px-6 pt-8">
+        <a 
+          href={`${import.meta.env.BASE_URL}/blog/`}
+          class="inline-flex items-center gap-2 text-primary hover:text-neonBlue transition-colors font-semibold"
+        >
+          <span class="material-symbols-outlined">arrow_back</span>
+          Volver al blog
+        </a>
+      </div>
+
+      <!-- POST CONTENT -->
+      <article class="container mx-auto px-6 py-8 max-w-4xl">
+        <div class="hud-frame bg-darkPanel/80 p-8 md:p-12 rounded-lg">
+          <div class="hud-scan"></div>
+
+          <!-- Header del post -->
+          <header class="mb-8 pb-8 border-b border-primary/30">
+            {post.data.image && (
+              <img 
+                src={post.data.image} 
+                alt={post.data.title}
+                class="w-full h-64 md:h-96 object-cover rounded-lg mb-6 border border-primary/25 shadow-neon"
+              />
+            )}
+
+            <h1 class="text-4xl md:text-5xl font-black text-white mb-4 glitch" data-text={post.data.title}>
+              {post.data.title}
+            </h1>
+
+            <div class="flex flex-wrap gap-4 items-center text-gray-400 text-sm">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">calendar_today</span>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">person</span>
+                <span>{post.data.author}</span>
+              </div>
+            </div>
+
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2 mt-4">
+                {post.data.tags.map(tag => (
+                  <span class="px-4 py-2 bg-primary/20 text-primary rounded-full border border-primary/40 text-sm font-semibold">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </header>
+
+          <!-- Contenido del post -->
+          <div class="prose prose-invert prose-lg max-w-none
+                      prose-headings:text-white prose-headings:font-bold
+                      prose-h1:text-4xl prose-h1:mb-6 prose-h1:text-primary
+                      prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8 prose-h2:text-primary/90
+                      prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-primary/80
+                      prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4
+                      prose-a:text-neonBlue prose-a:no-underline hover:prose-a:text-primary prose-a:transition-colors
+                      prose-strong:text-white prose-strong:font-bold
+                      prose-em:text-gray-200 prose-em:italic
+                      prose-code:text-neonBlue prose-code:bg-darkPanel prose-code:px-2 prose-code:py-1 prose-code:rounded
+                      prose-pre:bg-darkPanel prose-pre:border prose-pre:border-primary/30
+                      prose-ul:text-gray-300 prose-ol:text-gray-300
+                      prose-li:mb-2
+                      prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-400
+                      prose-hr:border-primary/30 prose-hr:my-8
+                      prose-img:rounded-lg prose-img:border prose-img:border-primary/25 prose-img:shadow-neon
+          ">
+            <Content />
+          </div>
+        </div>
+
+        <!-- Navegación entre posts -->
+        <div class="mt-12 flex justify-between items-center">
+          <a 
+            href={`${import.meta.env.BASE_URL}/blog/`}
+            class="px-6 py-3 bg-primary/20 text-primary border border-primary/40 rounded-lg hover:bg-primary/30 transition-all font-semibold flex items-center gap-2"
+          >
+            <span class="material-symbols-outlined">grid_view</span>
+            Ver todos los posts
+          </a>
+        </div>
+      </article>
+
+      <!-- FOOTER -->
+      <footer class="mt-20 border-t border-primary/40 py-10 text-center">
+        <p class="text-gray-500 text-sm mt-4">
+          © 2025 JessArt2002. Todos los derechos reservados.
+        </p>
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .hud-frame {
+    position: relative;
+    border: 1px solid rgba(242, 13, 242, 0.4);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 20px rgba(242, 13, 242, 0.4);
+  }
+
+  .hud-frame::before,
+  .hud-frame::after {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border: 2px solid #f20df2;
+  }
+
+  .hud-frame::before {
+    top: -4px;
+    left: -4px;
+    border-bottom: none;
+    border-right: none;
+  }
+
+  .hud-frame::after {
+    bottom: -4px;
+    right: -4px;
+    border-top: none;
+    border-left: none;
+  }
+
+  .hud-scan {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #f20df2, transparent);
+    animation: scan 3s infinite ease-in-out;
+    opacity: 0.7;
+  }
+
+  @keyframes scan {
+    0% {
+      top: 0%;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+
+  .glitch {
+    position: relative;
+    text-shadow: 0 0 6px #f20df2;
+  }
+
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: #00c6ff;
+    opacity: 0.5;
+    animation: glitchMove 0.5s infinite alternate;
+    z-index: -1;
+  }
+
+  @keyframes glitchMove {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-2px);
+    }
+  }
+
+  /* Estilos adicionales para el contenido markdown */
+  .prose img {
+    margin: 2rem auto;
+  }
+
+  .prose code {
+    font-size: 0.9em;
+  }
+
+  .prose pre {
+    padding: 1.5rem;
+    overflow-x: auto;
+  }
+</style>
