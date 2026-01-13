@@ -1,174 +1,503 @@
 ---
+import Layout from "../../layouts/Layout.astro";
 import eventosImage from '../../images/eventos.png';
 import registroImage from '../../images/registro.png';
 import aplicacionImage from '../../images/aplicacion.jpg';
 ---
 
-<html lang="es" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mis Proyectos</title>
+<Layout title="Proyectos">
+    <section class="proyectos-section">
+        <canvas id="particlesProjects" aria-hidden="true"></canvas>
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <div class="container">
+            <h2 class="projects-title glitch" data-text="Mis Proyectos">
+                Mis Proyectos
+            </h2>
 
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+            <p class="projects-subtitle">
+                Una colección de proyectos que he desarrollado durante mi carrera universitaria,
+                aplicando mis conocimientos en desarrollo web, bases de datos y diseño de aplicaciones.
+            </p>
 
-    <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#f20df2",
-              neonBlue: "#00c6ff",
-              neonPurple: "#b400ff",
-              darkBg: "#0a0010",
-              darkPanel: "#150018",
-              "background-dark": "#120013",
-            },
-            boxShadow: {
-              neon: "0 0 20px #f20df2",
-              neonBlue: "0 0 20px #00c6ff",
-            },
-            fontFamily: {
-              display: ["Space Grotesk", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
+            <div class="projects-grid hud-frame">
+                <article class="project-card">
+                    <div class="project-badge">Aplicación Móvil</div>
+                    <img
+                        src={aplicacionImage.src}
+                        alt="Aplicación de ayuda en desastres naturales"
+                        class="project-img"
+                    />
+                    <h3>Aplicación para Ayuda en Desastres Naturales</h3>
+                    <p>
+                        Desarrollo de una aplicación móvil diseñada para asistir a personas afectadas por
+                        desastres naturales, proporcionando información en tiempo real y recursos de emergencia.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">GPS</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-badge">Sitio Web</div>
+                    <img
+                        src={eventosImage.src}
+                        alt="Eventos escolares UES"
+                        class="project-img"
+                    />
+                    <h3>Portal de Eventos Escolares - UES San José del Rincón</h3>
+                    <p>
+                        Plataforma web interactiva para la difusión y gestión de eventos académicos,
+                        culturales y deportivos de la universidad, facilitando la participación estudiantil.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">PHP</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-badge">Sistema Web</div>
+                    <img
+                        src={registroImage.src}
+                        alt="Registro de estudiantes UES"
+                        class="project-img"
+                    />
+                    <h3>Sistema de Registro de Estudiantes - UES San José del Rincón</h3>
+                    <p>
+                        Sistema integral de gestión académica que permite el registro, seguimiento y
+                        administración de información de estudiantes activos y egresados de la institución.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">MySQL</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Bootstrap</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <style>
-      body {
-        background: radial-gradient(circle at center, #240024, #0a0010 80%);
-        background-attachment: fixed;
-      }
-
-      .project-img {
-        width: 100%;
-        margin-bottom: 14px;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 0, 255, 0.25);
-        box-shadow:
-          0 0 20px rgba(255, 0, 255, 0.25),
-          inset 0 0 20px rgba(255, 0, 255, 0.15);
-        transition:
-          transform 0.4s ease,
-          box-shadow 0.4s ease,
-          filter 0.4s ease;
-        animation: imgGlow 4.5s infinite ease-in-out;
-      }
-
-      .hud-frame:hover .project-img {
-        transform: scale(1.04);
-        box-shadow:
-          0 0 45px rgba(255, 0, 255, 0.6),
-          0 0 90px rgba(120, 0, 255, 0.8);
-        filter: brightness(1.15) saturate(1.4);
-      }
-
-      @keyframes imgGlow {
-        0%, 100% {
-          box-shadow: 0 0 18px rgba(255, 0, 255, 0.25);
+        .proyectos-section {
+            position: relative;
+            padding: 90px 20px;
+            min-height: 100vh;
+            text-align: center;
+            background: radial-gradient(
+                circle at 50% 20%,
+                #7d00ff 0%,
+                #2a0035 40%,
+                #0b0012 100%
+            );
+            overflow: hidden;
+            color: #fff;
         }
-        50% {
-          box-shadow: 0 0 35px rgba(255, 0, 255, 0.45);
-        }
-      }
 
-      .glitch {
-        position: relative;
-      }
-
-      .glitch::after {
-        content: attr(data-text);
-        position: absolute;
-        left: 2px;
-        top: 0;
-        color: #00c6ff;
-        opacity: 0.5;
-        mix-blend-mode: screen;
-        animation: glitchMove 0.6s infinite alternate;
-        z-index: -1;
-      }
-
-      @keyframes glitchMove {
-        from {
-          transform: translateX(0);
+        #particlesProjects {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            display: block;
         }
-        to {
-          transform: translateX(-3px);
+
+        .container {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 18px;
         }
-      }
+
+        .projects-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow:
+                0 0 10px #ff00ff,
+                0 0 25px #a700ff;
+            animation: glowPulse 2.6s infinite ease-in-out;
+        }
+
+        .projects-subtitle {
+            font-size: 1.1rem;
+            color: #d1d1d1;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        @keyframes glowPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 10px #ff00ff;
+            }
+            50% {
+                text-shadow:
+                    0 0 30px #ff00ff,
+                    0 0 80px #7100ff;
+            }
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 10px;
+            z-index: 3;
+        }
+
+        .project-card {
+            background: linear-gradient(
+                180deg,
+                rgba(20, 6, 34, 0.6),
+                rgba(10, 2, 18, 0.5)
+            );
+            border: 1px solid rgba(255, 0, 255, 0.18);
+            padding: 24px;
+            border-radius: 14px;
+            color: #fff;
+            backdrop-filter: blur(6px);
+            box-shadow:
+                0 0 30px rgba(160, 0, 255, 0.12),
+                inset 0 0 30px rgba(255, 0, 255, 0.02);
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 0 40px #ff00ff,
+                0 0 90px #7a00ff;
+            border-color: rgba(255, 0, 255, 0.5);
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(
+                from 200deg,
+                transparent,
+                rgba(255, 0, 255, 0.06),
+                transparent
+            );
+            transform: rotate(0deg);
+            transition: opacity 0.4s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-badge {
+            display: inline-block;
+            width: fit-content;
+            padding: 6px 14px;
+            background: rgba(242, 13, 242, 0.2);
+            border: 1px solid rgba(242, 13, 242, 0.5);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #f20df2;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 0, 255, 0.25);
+            box-shadow:
+                0 0 20px rgba(255, 0, 255, 0.25),
+                inset 0 0 20px rgba(255, 0, 255, 0.15);
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                filter 0.35s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 40px rgba(255, 0, 255, 0.45),
+                0 0 80px rgba(120, 0, 255, 0.75),
+                inset 0 0 40px rgba(255, 0, 255, 0.2);
+            filter: brightness(1.15) saturate(1.5);
+        }
+
+        @keyframes imgGlow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 0, 255, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(255, 0, 255, 0.4);
+            }
+        }
+
+        .project-img {
+            animation: imgGlow 4s infinite ease-in-out;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            line-height: 1.3;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover h3 {
+            color: #f20df2;
+            text-shadow: 0 0 10px rgba(242, 13, 242, 0.5);
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d1d1d1;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            background: rgba(0, 198, 255, 0.15);
+            border: 1px solid rgba(0, 198, 255, 0.4);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #00c6ff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(0, 198, 255, 0.25);
+            border-color: rgba(0, 198, 255, 0.7);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 198, 255, 0.3);
+        }
+
+        .hud-frame {
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(242, 13, 242, 0.18);
+        }
+
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 2px;
+            top: 0;
+            color: #00c6ff;
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            animation: glitchMove 0.6s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes glitchMove {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-3px);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .projects-title {
+                font-size: 2.2rem;
+            }
+
+            .projects-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+
+            .project-img {
+                height: 200px;
+            }
+
+            .project-card h3 {
+                font-size: 1.2rem;
+            }
+        }
     </style>
-  </head>
 
-  <body class="bg-darkBg text-gray-200 font-display">
-    <main class="container mx-auto px-6 py-12">
-      <h1
-        class="text-4xl font-bold glitch mb-12 text-center"
-        data-text="Mis Proyectos"
-      >
-        Mis Proyectos
-      </h1>
+    <script type="module">
+        (function () {
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", init);
+            } else {
+                init();
+            }
 
-      <div class="grid md:grid-cols-3 gap-8">
+            function init() {
+                const canvas = document.getElementById("particlesProjects");
+                const section = document.querySelector(".proyectos-section");
+                if (!canvas || !section) {
+                    console.warn(
+                        "particlesProjects canvas o proyectos-section no encontrado.",
+                    );
+                    return;
+                }
 
-        <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neon">
-          <img
-            src={aplicacionImage.src}
-            alt="Aplicación de ayuda en desastres naturales"
-            class="project-img"
-          />
-          <h2 class="text-xl font-semibold mb-2">
-            Aplicación para ayuda a necesitados en desastres naturales
-          </h2>
-          <p class="text-gray-400">
-            Se desarrolló una app que ayudaba a personas en situaciones de
-            desastres naturales.
-          </p>
-        </div>
+                const ctx = canvas.getContext && canvas.getContext("2d");
+                if (!ctx) {
+                    console.warn(
+                        "2D context not available on particlesProjects canvas.",
+                    );
+                    return;
+                }
 
-        <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neonBlue">
-          <img
-            src={eventosImage.src}
-            alt="Eventos escolares UES"
-            class="project-img"
-          />
-          <h2 class="text-xl font-semibold mb-2">
-            Página web de eventos escolares - UES San José del Rincón
-          </h2>
-          <p class="text-gray-400">
-            Sitio web para dar a conocer los eventos más importantes dentro de la UMB.
-          </p>
-        </div>
+                function setSize() {
+                    const rect = section.getBoundingClientRect();
+                    const dpr = window.devicePixelRatio || 1;
+                    const w = Math.max(1, Math.floor(rect.width));
+                    const h = Math.max(1, Math.floor(rect.height));
+                    canvas.width = Math.floor(w * dpr);
+                    canvas.height = Math.floor(h * dpr);
+                    canvas.style.width = w + "px";
+                    canvas.style.height = h + "px";
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
 
-        <div class="hud-frame bg-darkPanel p-6 rounded-lg shadow-neon">
-          <img
-            src={registroImage.src}
-            alt="Registro de estudiantes UES"
-            class="project-img"
-          />
-          <h2 class="text-xl font-semibold mb-2">
-            Registro de estudiantes - UES San José del Rincón
-          </h2>
-          <p class="text-gray-400">
-            Sistema de registro y control de estudiantes que han formado parte
-            de la institución.
-          </p>
-        </div>
+                setSize();
 
-      </div>
-    </main>
-  </body>
-</html>
+                let ro;
+                if (window.ResizeObserver) {
+                    ro = new ResizeObserver(() => setSize());
+                    ro.observe(section);
+                } else {
+                    window.addEventListener("resize", setSize);
+                }
+
+                const PARTICLE_COUNT = Math.min(
+                    180,
+                    Math.max(50, Math.floor((canvas.width / 1000) * 120)),
+                );
+                const particles = [];
+
+                function createParticles() {
+                    particles.length = 0;
+                    for (let i = 0; i < PARTICLE_COUNT; i++) {
+                        particles.push({
+                            x:
+                                (Math.random() * canvas.width) /
+                                (window.devicePixelRatio || 1),
+                            y:
+                                (Math.random() * canvas.height) /
+                                (window.devicePixelRatio || 1),
+                            size: Math.random() * 3 + 0.8,
+                            speedX: Math.random() * 0.8 - 0.4,
+                            speedY: Math.random() * 0.8 - 0.4,
+                            hueShift: Math.random() * 40 - 20,
+                        });
+                    }
+                }
+
+                createParticles();
+                
+                function handleResizeRecreate() {
+                    setSize();
+                    createParticles();
+                }
+
+                if (ro) {
+                    let to;
+                    ro.observe(section);
+                    ro.disconnect && ro.observe(section);
+                    window.addEventListener("resize", () => {
+                        clearTimeout(to);
+                        to = setTimeout(handleResizeRecreate, 150);
+                    });
+                }
+
+                let rafId = null;
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    const g = ctx.createLinearGradient(
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height,
+                    );
+                    g.addColorStop(0, "rgba(125,0,255,0.02)");
+                    g.addColorStop(1, "rgba(0,0,0,0.02)");
+                    ctx.fillStyle = g;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    particles.forEach((p) => {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `hsl(${285 + p.hueShift} 100% 60%)`;
+                        ctx.shadowBlur = 18;
+                        ctx.shadowColor = "rgba(255,0,255,0.9)";
+                        ctx.fill();
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size * 3.2, 0, Math.PI * 2);
+                        ctx.fillStyle = "rgba(160,0,255,0.06)";
+                        ctx.fill();
+
+                        p.x += p.speedX;
+                        p.y += p.speedY;
+
+                        const w = canvas.width / (window.devicePixelRatio || 1);
+                        const h =
+                            canvas.height / (window.devicePixelRatio || 1);
+                        if (p.x < -10) p.x = w + 10;
+                        if (p.x > w + 10) p.x = -10;
+                        if (p.y < -10) p.y = h + 10;
+                        if (p.y > h + 10) p.y = -10;
+                    });
+
+                    rafId = requestAnimationFrame(animate);
+                }
+
+                animate();
+
+                window.addEventListener("beforeunload", cleanup);
+                function cleanup() {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    if (ro && ro.disconnect) ro.disconnect();
+                    window.removeEventListener("resize", handleResizeRecreate);
+                    window.removeEventListener("beforeunload", cleanup);
+                }
+            }
+        })();
+    </script>
+</Layout>
