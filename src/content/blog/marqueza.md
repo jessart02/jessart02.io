@@ -4,7 +4,7 @@ description: "Para competir con demás compañeros de diferentes universidades U
 pubDate: 2025-09-17
 author: "Jesús Martínez Narciso"
 tags: ["competir", "umb", "marquesa"]
-image: "images/blog/marqueza.jpeg"
+image: "/images/blog/marqueza.jpeg"
 ---
 
 ## Partir de la unidad

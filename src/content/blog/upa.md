@@ -4,7 +4,7 @@ description: "Colaborando con la elaboración y participación del torneo de rob
 pubDate: 2024-11-15
 author: "Jesús Martínez Narciso"
 tags: ["robots", "torneo", "colibríes"]
-image: "images/blog/upa.jpeg"
+image: "/images/blog/upa.jpeg"
 ---
 
 ## Participando en el torneo de robots
