@@ -4,7 +4,7 @@ description: "Una experiencia increíble en donde aprendí bastantes cosas sobre
 pubDate: 2025-11-11
 author: "Jesús Martínez Narciso"
 tags: ["experiencia", "aprendizaje", "dinero"]
-image: "images/blog/banco.jpeg"
+image: "/images/blog/banco.jpeg"
 ---
 
 ## Iniciando el recorrido

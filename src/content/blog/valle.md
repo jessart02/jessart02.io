@@ -4,7 +4,7 @@ description: "El viaje a valle de bravo para una participacion mas en un torneo 
 pubDate: 2025-04-01
 author: "Jesús Martínez Narciso"
 tags: ["valle", "torneo", "presa"]
-image: "images/blog/valle.jpeg"
+image: "/images/blog/valle.jpeg"
 ---
 
 ## Valle de bravo
