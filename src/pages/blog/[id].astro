@@ -65,7 +65,7 @@ const { Content } = await post.render();
           <header class="mb-8 pb-8 border-b border-primary/30">
             {post.data.image && (
               <img 
-                src={post.data.image} 
+                src={`${import.meta.env.BASE_URL}${post.data.image}`} 
                 alt={post.data.title}
                 class="w-full h-64 md:h-96 object-cover rounded-lg mb-6 border border-primary/25 shadow-neon"
               />

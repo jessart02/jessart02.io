@@ -4,7 +4,7 @@ description: "Participando en una nueva competencia, pero esta vez con menos hor
 pubDate: 2025-10-11
 author: "Jesús Martínez Narciso"
 tags: ["Latinoamérica", "rally", "sistemas"]
-image: "/images/rally.jpeg"
+image: "images/rally.jpeg"
 ---
 
 ## Una nueva experiencia
