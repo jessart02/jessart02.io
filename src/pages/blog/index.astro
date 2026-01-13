@@ -1,0 +1,202 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout>
+  <main class="font-display">
+    <div class="min-h-screen w-full">
+      <!-- HEADER -->
+      <header
+        class="flex items-center justify-between border-b border-primary/40 px-6 py-4 backdrop-blur-md bg-darkPanel/40 shadow-neon"
+      >
+        <div class="flex items-center gap-4">
+          <div class="text-primary size-7 drop-shadow-neon">
+            <span class="material-symbols-outlined text-4xl">
+              radio_button_checked
+            </span>
+          </div>
+          <h2 class="text-xl font-bold tracking-wide drop-shadow-neon">
+            Portafolio de Evidencias
+          </h2>
+        </div>
+
+        <nav class="hidden md:flex gap-6 text-gray-300">
+          <a href={`${import.meta.env.BASE_URL}/`} class="hover:text-primary transition">Inicio</a>
+          <a href={`${import.meta.env.BASE_URL}/habilidades/`} class="hover:text-primary transition">Habilidades</a>
+          <a href={`${import.meta.env.BASE_URL}/proyectos/`} class="hover:text-primary transition">Proyectos</a>
+          <a href={`${import.meta.env.BASE_URL}/blog/`} class="text-primary font-bold">Blog</a>
+          <a href={`${import.meta.env.BASE_URL}/contact/`} class="hover:text-primary transition">Contacto</a>
+        </nav>
+
+        <button class="md:hidden text-gray-100">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </header>
+
+      <!-- HERO SECTION -->
+      <section
+        class="mt-10 mx-6 flex flex-col items-center justify-center gap-4 p-8 rounded-xl text-center border border-primary/40 bg-darkPanel/60 shadow-neon"
+        style='background-image: linear-gradient(rgba(0,0,0,0.5), rgba(10,0,16,0.9)), url("/dark-neon-red-and-teal-40d4u8kcwxp11ijp.jpg"); background-size: cover; background-position: center;'
+      >
+        <h1
+          class="text-5xl md:text-6xl font-black text-primary drop-shadow-[0_0_20px_#f20df2] glitch"
+          data-text="Blog"
+        >
+          Blog
+        </h1>
+        <p class="max-w-2xl text-gray-300 mt-4">
+          Mis pensamientos, experiencias y aventuras en el mundo de la tecnología, el arte y el anime.
+        </p>
+      </section>
+
+      <!-- POSTS GRID -->
+      <section class="container mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedPosts.map((post) => (
+            <article class="hud-frame bg-darkPanel/80 p-6 rounded-lg hover:shadow-neon transition-all duration-300 group">
+              <div class="hud-scan"></div>
+              
+              {post.data.image && (
+                <img 
+                  src={post.data.image} 
+                  alt={post.data.title}
+                  class="w-full h-48 object-cover rounded-lg mb-4 border border-primary/25 group-hover:border-primary/60 transition-all"
+                />
+              )}
+              
+              <div class="flex gap-2 mb-3">
+                {post.data.tags?.map(tag => (
+                  <span class="text-xs px-3 py-1 bg-primary/20 text-primary rounded-full border border-primary/30">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <a href={`${import.meta.env.BASE_URL}/blog/${post.slug}`}>
+                <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                  {post.data.title}
+                </h2>
+              </a>
+
+              <p class="text-gray-400 text-sm mb-4">
+                {post.data.pubDate.toLocaleDateString('es-ES', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
+
+              <p class="text-gray-300 mb-4">
+                {post.data.description}
+              </p>
+
+              <a 
+                href={`${import.meta.env.BASE_URL}/blog/${post.slug}`}
+                class="inline-flex items-center gap-2 text-primary hover:text-neonBlue transition-colors font-semibold"
+              >
+                Leer más
+                <span class="material-symbols-outlined text-xl">arrow_forward</span>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        {sortedPosts.length === 0 && (
+          <div class="text-center py-20">
+            <p class="text-gray-400 text-xl">
+              Aún no hay publicaciones. ¡Pronto habrá contenido nuevo!
+            </p>
+          </div>
+        )}
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="mt-20 border-t border-primary/40 py-10 text-center">
+        <p class="text-gray-500 text-sm mt-4">
+          © 2025 JessArt2002. Todos los derechos reservados.
+        </p>
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .hud-frame {
+    position: relative;
+    border: 1px solid rgba(242, 13, 242, 0.4);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 20px rgba(242, 13, 242, 0.4);
+  }
+
+  .hud-frame::before,
+  .hud-frame::after {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border: 2px solid #f20df2;
+  }
+
+  .hud-frame::before {
+    top: -4px;
+    left: -4px;
+    border-bottom: none;
+    border-right: none;
+  }
+
+  .hud-frame::after {
+    bottom: -4px;
+    right: -4px;
+    border-top: none;
+    border-left: none;
+  }
+
+  .hud-scan {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #f20df2, transparent);
+    animation: scan 3s infinite ease-in-out;
+    opacity: 0.7;
+  }
+
+  @keyframes scan {
+    0% {
+      top: 0%;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+
+  .glitch {
+    position: relative;
+    text-shadow: 0 0 6px #f20df2;
+  }
+
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: #00c6ff;
+    opacity: 0.6;
+    animation: glitchMove 0.5s infinite alternate;
+  }
+
+  @keyframes glitchMove {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-2px);
+    }
+  }
+</style>
